@@ -23,6 +23,7 @@
 		B0D8E1621AA1A0CE009AEA31 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1611AA1A0CE009AEA31 /* PhotoViewController.swift */; };
 		B0D8E1651AA3A77B009AEA31 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1631AA3A77B009AEA31 /* FadeTransition.swift */; };
 		B0D8E1661AA3A77B009AEA31 /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1641AA3A77B009AEA31 /* BaseTransition.swift */; };
+		B0D8E1691AA3ADD9009AEA31 /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1681AA3ADD9009AEA31 /* ImageTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		B0D8E1611AA1A0CE009AEA31 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		B0D8E1631AA3A77B009AEA31 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
 		B0D8E1641AA3A77B009AEA31 /* BaseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
+		B0D8E1681AA3ADD9009AEA31 /* ImageTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D8E1631AA3A77B009AEA31 /* FadeTransition.swift */,
+				B0D8E1681AA3ADD9009AEA31 /* ImageTransition.swift */,
 				B0D8E1641AA3A77B009AEA31 /* BaseTransition.swift */,
 			);
 			name = Transitions;
@@ -265,6 +268,7 @@
 				429277A4198F391500E19641 /* CreateStatusViewController.swift in Sources */,
 				429277A8198F393500E19641 /* CreateCheckinViewController.swift in Sources */,
 				42167678198ECE0E008CCBC3 /* RequestsViewController.swift in Sources */,
+				B0D8E1691AA3ADD9009AEA31 /* ImageTransition.swift in Sources */,
 				42167673198EAABC008CCBC3 /* SettingsViewController.swift in Sources */,
 				4216767A198ECE88008CCBC3 /* NewsFeedViewController.swift in Sources */,
 				B0D8E1661AA3A77B009AEA31 /* BaseTransition.swift in Sources */,

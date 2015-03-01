@@ -14,9 +14,9 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var feedImageView: UIImageView!
     
-    var fadeTransition: FadeTransition!
+    var imageTransition: ImageTransition!
     
-    var imageView: UIImageView!
+    var selectedImageView: UIImageView!
     var window = UIApplication.sharedApplication().keyWindow
     
     override func viewDidLoad() {
@@ -41,17 +41,18 @@ class NewsFeedViewController: UIViewController {
     }
     
     @IBAction func tappedGestureRecognizer(sender: AnyObject) {
-        imageView = sender.view as UIImageView
+        selectedImageView = sender.view as UIImageView
         performSegueWithIdentifier("viewPhotoSegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var destinationVC = segue.destinationViewController as PhotoViewController
         
-        destinationVC.photoImage = imageView.image
+        destinationVC.photoImage = selectedImageView.image
         
-        fadeTransition = FadeTransition()
+        imageTransition = ImageTransition()
+        
         destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom
-        destinationVC.transitioningDelegate = fadeTransition
+        destinationVC.transitioningDelegate = imageTransition
     }
 }
