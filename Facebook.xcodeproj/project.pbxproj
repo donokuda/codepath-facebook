@@ -21,6 +21,8 @@
 		429277A6198F392800E19641 /* CreatePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A5198F392800E19641 /* CreatePhotoViewController.swift */; };
 		429277A8198F393500E19641 /* CreateCheckinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429277A7198F393500E19641 /* CreateCheckinViewController.swift */; };
 		B0D8E1621AA1A0CE009AEA31 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1611AA1A0CE009AEA31 /* PhotoViewController.swift */; };
+		B0D8E1651AA3A77B009AEA31 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1631AA3A77B009AEA31 /* FadeTransition.swift */; };
+		B0D8E1661AA3A77B009AEA31 /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8E1641AA3A77B009AEA31 /* BaseTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		429277A5198F392800E19641 /* CreatePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePhotoViewController.swift; sourceTree = "<group>"; };
 		429277A7198F393500E19641 /* CreateCheckinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCheckinViewController.swift; sourceTree = "<group>"; };
 		B0D8E1611AA1A0CE009AEA31 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		B0D8E1631AA3A77B009AEA31 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		B0D8E1641AA3A77B009AEA31 /* BaseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		42167652198E3220008CCBC3 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
+				B0D8E1671AA3A787009AEA31 /* Transitions */,
 				42167674198EAAC6008CCBC3 /* View Controllers */,
 				42167655198E3220008CCBC3 /* AppDelegate.swift */,
 				42167659198E3220008CCBC3 /* Main.storyboard */,
@@ -142,6 +147,15 @@
 				429277A7198F393500E19641 /* CreateCheckinViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B0D8E1671AA3A787009AEA31 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				B0D8E1631AA3A77B009AEA31 /* FadeTransition.swift */,
+				B0D8E1641AA3A77B009AEA31 /* BaseTransition.swift */,
+			);
+			name = Transitions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +267,8 @@
 				42167678198ECE0E008CCBC3 /* RequestsViewController.swift in Sources */,
 				42167673198EAABC008CCBC3 /* SettingsViewController.swift in Sources */,
 				4216767A198ECE88008CCBC3 /* NewsFeedViewController.swift in Sources */,
+				B0D8E1661AA3A77B009AEA31 /* BaseTransition.swift in Sources */,
+				B0D8E1651AA3A77B009AEA31 /* FadeTransition.swift in Sources */,
 				B0D8E1621AA1A0CE009AEA31 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
