@@ -104,6 +104,10 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        if scrollView == photosScrollView {
+            return nil
+        }
+
         return photoImageView
     }
 
@@ -114,7 +118,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         var toImageViewWidth = CGRectGetWidth(toViewBounds)
         var toImageViewHeight = toImageViewWidth * aspectRatio
         
-        return CGRect(x: CGFloat(page) * toImageViewWidth, y: CGRectGetMidY(toViewBounds) - toImageViewHeight * 0.5, width: toImageViewWidth, height: toImageViewHeight)
+        return CGRect(x: 0, y: CGRectGetMidY(toViewBounds) - toImageViewHeight * 0.5, width: toImageViewWidth, height: toImageViewHeight)
     }
     
     @IBAction func didDoubleTapPhoto(sender: UITapGestureRecognizer) {
@@ -124,18 +128,19 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidZoom(scrollView: UIScrollView) {
         var scrollViewSize = scrollView.bounds.size
-        var imageViewSize = photoImageView.frame.size
-        
+        var imageView = scrollView.subviews[0] as UIImageView
+        var imageViewSize = imageView.frame.size
+
         if imageViewSize.width < scrollViewSize.width {
-           photoImageView.frame.origin.x = (scrollViewSize.width - imageViewSize.width) / 2
+           imageView.frame.origin.x = (scrollViewSize.width - imageViewSize.width) / 2
         } else {
-           photoImageView.frame.origin.x = 0
+            imageView.frame.origin.x = 0
         }
         
         if imageViewSize.height < scrollViewSize.height {
-           photoImageView.frame.origin.y = (scrollViewSize.height - imageViewSize.height) / 2
+           imageView.frame.origin.y = (scrollViewSize.height - imageViewSize.height) / 2
         } else {
-           photoImageView.frame.origin.y = 0
+           imageView.frame.origin.y = 0
         }
     }
 }
