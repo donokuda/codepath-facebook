@@ -23,7 +23,14 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
     var photoImageView: UIImageView {
         get {
-            return self.images[self.startPage]
+            return self.images[self.currentPage]
+        }
+    }
+
+    var currentPage: Int {
+        get {
+            var xOffset = max(self.photosScrollView.contentOffset.x, 0)
+            return Int(floor( xOffset / self.photosScrollView.bounds.width))
         }
     }
 
@@ -126,16 +133,18 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         var scrollViewSize = scrollView.bounds.size
         var imageViewSize = photoImageView.frame.size
         
-        if imageViewSize.width < scrollViewSize.width {
+//        if imageViewSize.width < scrollViewSize.width {
            photoImageView.frame.origin.x = (scrollViewSize.width - imageViewSize.width) / 2
-        } else {
-           photoImageView.frame.origin.x = 0
-        }
-        
-        if imageViewSize.height < scrollViewSize.height {
+//        } else {
+//           photoImageView.frame.origin.x = 0
+//        }
+
+//        if imageViewSize.height < scrollViewSize.height {
            photoImageView.frame.origin.y = (scrollViewSize.height - imageViewSize.height) / 2
-        } else {
-           photoImageView.frame.origin.y = 0
-        }
+//        } else {
+//           photoImageView.frame.origin.y = 0
+//        }
+
+       photoImageView.frame.origin.x += scrollViewSize.width * CGFloat(currentPage)
     }
 }
