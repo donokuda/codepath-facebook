@@ -19,15 +19,17 @@ class ImageTransition: BaseTransition {
         let photoViewController = toViewController as PhotoViewController
 
         let fromImageView = newsFeedViewController.selectedImageView
+        fromImageView.hidden = true
+        
         let toImageView = photoViewController.photoImageView
         toImageView.hidden = true
-        toImageView.frame = imageViewFrameForImage(fromImageView.image!, inView: toImageView.superview!)
        
         toViewController.view.alpha = 0
         
-        transitionFromImageView(fromImageView, toImageView: toImageView, animations: { () -> () in
+        
+        transitionFromImageView(fromImageView, toImageView: toImageView, animations: {
             toViewController.view.alpha = 1
-        }) { (completed) -> () in
+        }) { completed in
             toImageView.hidden = false
         }
     }
@@ -45,21 +47,11 @@ class ImageTransition: BaseTransition {
         
         let toImageView = newsFeedViewController.selectedImageView
         
-        transitionFromImageView(fromImageView, toImageView: toImageView, animations: { () -> () in
+        transitionFromImageView(fromImageView, toImageView: toImageView, animations: {
             fromViewController.view.alpha = 0
-            
-            }) { (completed) -> () in
+        }) { completed in
+            toImageView.hidden = false
         }
-    }
-    
-    func imageViewFrameForImage(image: UIImage, inView view: UIView) -> CGRect {
-        let fromImageSize = image.size
-        var aspectRatio: CGFloat = CGFloat(fromImageSize.height / fromImageSize.width)
-        var toViewBounds = view.bounds
-        var toImageViewWidth = CGRectGetWidth(toViewBounds)
-        var toImageViewHeight = toImageViewWidth * aspectRatio
-        
-        return CGRect(x: 0, y: CGRectGetMidY(toViewBounds) - toImageViewHeight * 0.5, width: toImageViewWidth, height: toImageViewHeight)
     }
     
     func transitionFromImageView(fromImageView: UIImageView, toImageView: UIImageView, animations: () -> (), completion: (Bool) -> ()) {
@@ -72,6 +64,7 @@ class ImageTransition: BaseTransition {
         window?.addSubview(transitionImageView)
         
         UIView.animateWithDuration(duration, animations: {
+            println(toImageView)
             transitionImageView.frame = window!.convertRect(toImageView.frame, fromView: toImageView.superview)
             animations()
         }) { (finished: Bool) -> Void in

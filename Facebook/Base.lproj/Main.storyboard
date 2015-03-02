@@ -136,9 +136,9 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="wu3-Tk-lTz">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" id="wu3-Tk-lTz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dXP-yd-HH8">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -166,6 +166,7 @@
                         <outlet property="doneButton" destination="H2q-ie-lkW" id="fsP-Md-Mv1"/>
                         <outlet property="photoActionsImageView" destination="A0p-eG-D8x" id="Vl7-DE-sbS"/>
                         <outlet property="photoImageView" destination="dXP-yd-HH8" id="q9i-ox-jWl"/>
+                        <outlet property="photosScrollView" destination="wu3-Tk-lTz" id="Q1h-97-N8D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ti-UY-pNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,7 +194,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_feed-1" id="BFk-jQ-UCW">
-                                        <rect key="frame" x="1" y="0.0" width="320" height="458"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="458"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wedding1" id="FTJ-Qd-8aK">
