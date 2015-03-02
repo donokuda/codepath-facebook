@@ -16,6 +16,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var photoActionsImageView: UIImageView!
     
     var photoImage: UIImage!
+    var dismissing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +25,29 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var alpha = 1 - abs(scrollView.contentOffset.y) / scrollView.bounds.height
-        dimmingView.alpha = alpha
-        doneButton.alpha = alpha
-        photoActionsImageView.alpha = alpha
+        if !dismissing {
+            var alpha = 1 - abs(scrollView.contentOffset.y) / scrollView.bounds.height
+            dimmingView.alpha = alpha
+            doneButton.alpha = alpha
+            photoActionsImageView.alpha = alpha
+        }
     }
 
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if abs(scrollView.contentOffset.y) >= 100 {
+            dismiss()
+        }
+    }
+    
     @IBAction func didTapDone(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss()
+    }
+    
+    func dismiss() {
+        dismissing = true
+        
+        dismissViewControllerAnimated(true, completion: { () -> Void in
+            self.dismissing = false
+        })
     }
 }
