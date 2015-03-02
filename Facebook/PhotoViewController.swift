@@ -11,11 +11,28 @@ import UIKit
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var dimmingView: UIView!
     @IBOutlet weak var photoActionsImageView: UIImageView!
     @IBOutlet weak var photosScrollView: UIScrollView!
-    
+
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
+    @IBOutlet weak var imageView3: UIImageView!
+    @IBOutlet weak var imageView4: UIImageView!
+    @IBOutlet weak var imageView5: UIImageView!
+
+    var photoImageView: UIImageView {
+        get {
+            return self.images[self.startPage]
+        }
+    }
+
+    lazy var images: [UIImageView] = self.allImages()
+
+    func allImages() -> [UIImageView] {
+        return [imageView1, imageView2, imageView3, imageView4, imageView5]
+    }
+
     var photoImage: UIImage!
     var dismissing: Bool = false
     var scrollViewIsZooming: Bool {
@@ -23,6 +40,8 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
             return photosScrollView.zoomScale > 1.0
         }
     }
+
+    var startPage = 0
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,9 +58,16 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        photoImageView.image = photoImage
-        photoImageView.frame = imageViewFrameForImage(photoImageView.image!, inView: photoImageView.superview!)
-        photosScrollView.contentSize = photoImageView.frame.size
+        for (index, imageView) in enumerate(images) {
+            imageView.frame = frameForImageView(imageView, atPage: index)
+        }
+
+        photosScrollView.contentSize = photosScrollView.bounds.size
+        photosScrollView.contentSize.width *= 5
+
+        var startOffset = CGPoint(x: photosScrollView.bounds.size.width * CGFloat(startPage), y: 0)
+
+        photosScrollView.setContentOffset(startOffset, animated: false)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -80,15 +106,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return photoImageView
     }
-    
-    func imageViewFrameForImage(image: UIImage, inView view: UIView) -> CGRect {
-        let fromImageSize = image.size
+
+    func frameForImageView(imageView: UIImageView, atPage page: Int) -> CGRect {
+        let fromImageSize = imageView.image!.size
         var aspectRatio: CGFloat = CGFloat(fromImageSize.height / fromImageSize.width)
-        var toViewBounds = view.bounds
+        var toViewBounds = photosScrollView.bounds
         var toImageViewWidth = CGRectGetWidth(toViewBounds)
         var toImageViewHeight = toImageViewWidth * aspectRatio
         
-        return CGRect(x: 0, y: CGRectGetMidY(toViewBounds) - toImageViewHeight * 0.5, width: toImageViewWidth, height: toImageViewHeight)
+        return CGRect(x: CGFloat(page) * toImageViewWidth, y: CGRectGetMidY(toViewBounds) - toImageViewHeight * 0.5, width: toImageViewWidth, height: toImageViewHeight)
     }
     
     @IBAction func didDoubleTapPhoto(sender: UITapGestureRecognizer) {

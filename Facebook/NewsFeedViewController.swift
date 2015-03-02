@@ -47,9 +47,9 @@ class NewsFeedViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         var destinationVC = segue.destinationViewController as PhotoViewController
-        
-        destinationVC.photoImage = selectedImageView.image
-        
+
+        destinationVC.startPage = selectedImageView.tag
+
         imageTransition = ImageTransition()
         
         destinationVC.modalPresentationStyle = UIModalPresentationStyle.Custom

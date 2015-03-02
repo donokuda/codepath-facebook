@@ -64,7 +64,6 @@ class ImageTransition: BaseTransition {
         window?.addSubview(transitionImageView)
         
         UIView.animateWithDuration(duration, animations: {
-            println(toImageView)
             transitionImageView.frame = window!.convertRect(toImageView.frame, fromView: toImageView.superview)
             animations()
         }) { (finished: Bool) -> Void in
