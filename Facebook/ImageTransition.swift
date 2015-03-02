@@ -19,28 +19,25 @@ class ImageTransition: BaseTransition {
         let newsFeedViewController = navigationController.topViewController as NewsFeedViewController
         let photoViewController = toViewController as PhotoViewController
 
-        photoViewController.photoImageView.hidden = true
+        let fromImageView = newsFeedViewController.selectedImageView
+        let toImageView = photoViewController.photoImageView
+        let window = fromImageView.window
         
-        let selectedImageView = newsFeedViewController.selectedImageView
-        let animatedImageView = UIImageView(image: selectedImageView.image)
-        animatedImageView.contentMode = .ScaleAspectFit
-        
-        let window = selectedImageView.window
-        
-        animatedImageView.frame = window!.convertRect(selectedImageView.frame, fromView: newsFeedViewController.scrollView)
-        
-        selectedImageView.window?.addSubview(animatedImageView)
+        let transitionImageView = UIImageView(image: fromImageView.image)
+        transitionImageView.contentMode = .ScaleAspectFit
+        transitionImageView.frame = window!.convertRect(fromImageView.frame, fromView: fromImageView.superview)
+        window?.addSubview(transitionImageView)
        
         toViewController.view.alpha = 0
+        toImageView.hidden = true
+        
         UIView.animateWithDuration(duration, animations: {
-            
-            animatedImageView.frame = window!.convertRect(photoViewController.photoImageView.frame, fromView: photoViewController.view)
-            
+            transitionImageView.frame = window!.convertRect(toImageView.frame, fromView: toImageView.superview)
             toViewController.view.alpha = 1
-            }) { (finished: Bool) -> Void in
-                animatedImageView.removeFromSuperview()
-                photoViewController.photoImageView.hidden = false
-                self.finish()
+        }) { (finished: Bool) -> Void in
+            transitionImageView.removeFromSuperview()
+            toImageView.hidden = false
+            self.finish()
         }
     }
     
@@ -51,9 +48,10 @@ class ImageTransition: BaseTransition {
         let navigationController = viewControllers[0] as UINavigationController
         let newsFeedViewController = navigationController.topViewController as NewsFeedViewController
         let photoViewController = fromViewController as PhotoViewController
+        
         let fromImageView = photoViewController.photoImageView
-        let window = fromImageView.window
         let toImageView = newsFeedViewController.selectedImageView
+        let window = fromImageView.window
         
         var transitionImageView = UIImageView(image: fromImageView.image)
         transitionImageView.contentMode = fromImageView.contentMode
@@ -64,11 +62,10 @@ class ImageTransition: BaseTransition {
         
         UIView.animateWithDuration(duration, animations: {
             transitionImageView.frame = window!.convertRect(toImageView.frame, fromView: toImageView.superview)
-            
             fromViewController.view.alpha = 0
-            }) { (finished: Bool) -> Void in
-                transitionImageView.removeFromSuperview()
-                self.finish()
+        }) { (finished: Bool) -> Void in
+            transitionImageView.removeFromSuperview()
+            self.finish()
         }
     }
 }
