@@ -24,6 +24,18 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,6 +89,11 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         var toImageViewHeight = toImageViewWidth * aspectRatio
         
         return CGRect(x: 0, y: CGRectGetMidY(toViewBounds) - toImageViewHeight * 0.5, width: toImageViewWidth, height: toImageViewHeight)
+    }
+    
+    @IBAction func didDoubleTapPhoto(sender: UITapGestureRecognizer) {
+        var zoomScale = scrollViewIsZooming ? photosScrollView.minimumZoomScale : photosScrollView.maximumZoomScale
+        photosScrollView.setZoomScale(zoomScale, animated: true)
     }
     
     func scrollViewDidZoom(scrollView: UIScrollView) {

@@ -150,7 +150,7 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="H2q-ie-lkW">
-                                <rect key="frame" x="256" y="24" width="51" height="27"/>
+                                <rect key="frame" x="261" y="8" width="51" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="doneButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,6 +161,7 @@
                             </button>
                         </subviews>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="dimmingView" destination="1OI-i2-cff" id="GQ1-Oh-bSF"/>
                         <outlet property="doneButton" destination="H2q-ie-lkW" id="fsP-Md-Mv1"/>
@@ -170,6 +171,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ti-UY-pNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="q2o-1a-73g">
+                    <connections>
+                        <action selector="didDoubleTapPhoto:" destination="jFn-ZA-cfW" id="vk8-wd-Otx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1320" y="1383"/>
         </scene>
